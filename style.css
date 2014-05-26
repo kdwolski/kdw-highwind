@@ -34,11 +34,11 @@ a.post-format i{
 	vertical-align: middle;
 	line-height: 2.3em;
 	color:#fff;
-	background: rgba(0, 0, 0, 0.05);
+	background: rgba(0, 0, 0, 0.06);
 }
 
 a:hover.post-format i{
-	opacity: .8;
+	opacity: .6;
 }
 
 /*==========  Social Media Icons  ==========*/
