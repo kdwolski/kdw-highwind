@@ -41,6 +41,13 @@ a:hover.post-format i{
 	opacity: .6;
 }
 
+.format-image img{
+  border-radius: 1em;
+  box-shadow: 8px 7px 11px #ccc;
+  margin: 0 auto;
+  width:100%;
+}
+
 /*==========  Social Media Icons  ==========*/
 .sm-channels{
 	width:100%;
