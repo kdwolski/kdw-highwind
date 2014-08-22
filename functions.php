@@ -21,12 +21,23 @@ add_action( 'wp_enqueue_scripts', 'kdw_highwind_scripts' );
 /*==========  Add to theme customizer  ==========*/
 
 function kdw_highwind_customizer( $wp_customize ) {
+
+    //sections
     $wp_customize->add_section(
         'social_media_channels',
         array(
             'title' => 'Social Media Channels',
             'description' => 'Enter the full URL to the social media channel landing page',
-            'priority' => 35,
+            'priority' => 35
+        )
+    );
+
+    $wp_customize->add_section(
+        'google_analytics_js',
+        array(
+            'title' => 'Google Analytics ID',
+            'description' => 'Example: UA-######-1',
+            'priority' => 36
         )
     );
 
@@ -66,6 +77,13 @@ function kdw_highwind_customizer( $wp_customize ) {
 );
      $wp_customize->add_setting(
     'wordpress_textbox',
+    array(
+        'default' => '',
+    )
+);
+
+     $wp_customize->add_setting(
+    'ga_textbox',
     array(
         'default' => '',
     )
@@ -121,6 +139,15 @@ function kdw_highwind_customizer( $wp_customize ) {
         'type' => 'text',
     )
 );
+
+    $wp_customize->add_control(
+    'ga_textbox',
+    array(
+        'label' => 'ID',
+        'section' => 'google_analytics_js',
+        'type' => 'text',
+    )
+);
 }
 add_action( 'customize_register', 'kdw_highwind_customizer' );
 
@@ -148,6 +175,29 @@ function kdw_highwind_social_media(){
 }
 
 add_action('highwind_sidebar_top', 'kdw_highwind_social_media');
+
+function kdw_highwind_google_analytics_js(){
+
+        if( get_theme_mod( 'ga_textbox', '' ) != '' ){
+            $gaId = get_theme_mod( 'ga_textbox', '' );
+
+            $gaSnippet = "
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', '" . $gaId ."', 'auto');
+                ga('send', 'pageview');
+            </script>";
+
+            echo $gaSnippet;
+
+        }
+}
+
+add_action('highwind_head_bottom', 'kdw_highwind_google_analytics_js');
 
 /*==========  Update footer attribution   ==========*/
 
