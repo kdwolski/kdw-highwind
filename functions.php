@@ -11,8 +11,12 @@ function kdw_highwind_init(){
 add_action( 'init', 'kdw_highwind_init');
 
 
-/*==========  Custom JavaScript  ==========*/
+/*==========  Child theme CSS and custom JavaScript  ==========*/
 function kdw_highwind_scripts() {
+
+    // Hat-tip: @kovshenin - http://kovshenin.com/2014/child-themes-import/
+    wp_enqueue_style( 'highwind-parent', get_template_directory_uri() . '/style.css' );
+
 	wp_enqueue_script( 'kdw-js', get_stylesheet_directory_uri() . '/assets/js/kdw.js', array('jquery'), '1.0.0', true );
 }
 

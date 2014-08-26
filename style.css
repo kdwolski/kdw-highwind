@@ -5,10 +5,8 @@
  Author:       Kevin D. Wolski
  Author URI:   http://kdwolski.com
  Template:     highwind
- Version:      0.0.1
+ Version:      0.0.2
 */
-
-@import url("../highwind/style.css");
 
 .header.header.small img,
 .header.header.small .site-description{
