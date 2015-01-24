@@ -54,6 +54,10 @@ a:hover.post-format i{
   width:100%;
 }
 
+nav.navigation-post{
+  font-size:.8em;
+}
+
 /*==========  Social Media Icons  ==========*/
 .sm-channels{
 	width:100%;
